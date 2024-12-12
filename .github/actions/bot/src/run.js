@@ -47,12 +47,13 @@ async function run(core, context, github) {
         const jobs = await github.rest.checks.listForRef({
             owner,
             repo,
-            ref: prRef,
-            status: "completed"
+            ref: prRef
+            //status: "completed"
         });
 
         core.info(jobs.data.check_runs.length);
         jobs.data.check_runs.forEach(job => {
+            core.info(job.status);
             core.info(job.conclusion);
             if (job.conclusion === 'failure' || job.conclusion === 'cancelled') {
                 core.info("rerun job " + job.name);
