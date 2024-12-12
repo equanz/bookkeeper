@@ -17,7 +17,7 @@
 # under the License.
 #
 
-name: Bot tests
+name: Bot test
 on:
   issue_comment:
     types: [created]
