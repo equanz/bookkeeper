@@ -42,6 +42,8 @@ async function run(core, context, github) {
             pull_number: context.issue.number,
         });
 
+        core.info(prRef);
+
         const jobs = await github.rest.checks.listForRef({
             owner,
             repo,
