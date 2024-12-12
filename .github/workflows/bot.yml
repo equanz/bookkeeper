@@ -38,7 +38,7 @@ jobs:
           REPOSITORY: 'bookkeeper'
           RERUN_CMD: 'rerun failure checks'
         with:
-          github-token: ${{secrets.BKBOT_TOKEN}}
+          #github-token: ${{secrets.BKBOT_TOKEN}}
           script: |
             const path = require('path')
             const scriptPath = path.resolve('.github/actions/bot/src/run.js')
