@@ -37,7 +37,7 @@ on:
 jobs:
   stream-storage-python-client-unit-tests:
     name: StreamStorage Python Client Unit Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 60
     steps:
       - name: checkout
@@ -50,7 +50,7 @@ jobs:
 
   Stream-storage-python-client-integration-tests:
     name: StreamStorage Python Client Integration Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 60
     steps:
       - name: checkout
