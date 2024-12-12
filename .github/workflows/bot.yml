@@ -34,7 +34,7 @@ jobs:
       - name: bot actions
         uses: actions/github-script@v7
         env:
-          PROVIDER: 'apache'
+          PROVIDER: 'equanz'
           REPOSITORY: 'bookkeeper'
           RERUN_CMD: 'rerun failure checks'
         with:

@@ -47,8 +47,8 @@ async function run(core, context, github) {
         const jobs = await github.rest.checks.listForRef({
             owner,
             repo,
-            ref: prRef
-            //status: "completed"
+            ref: prRef,
+            status: "completed"
         });
 
         core.info(jobs.data.check_runs.length);
