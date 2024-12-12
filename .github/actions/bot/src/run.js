@@ -17,6 +17,7 @@
  */
 
 async function run(core, context, github) {
+    core.info('beginning');
 
     try {
         const owner = process.env.PROVIDER;
@@ -25,7 +26,7 @@ async function run(core, context, github) {
         const comment = context.payload.comment.body;
 
         if (comment !== reRunCmd) {
-            console.log("this is not a bot command");
+            core.info("this is not a bot command");
             return;
         }
 
@@ -48,11 +49,11 @@ async function run(core, context, github) {
             status: "completed"
         });
 
-        console.log(jobs.data.check_runs.length);
+        core.info(jobs.data.check_runs.length);
         jobs.data.check_runs.forEach(job => {
-            console.log(job.conclusion);
+            core.info(job.conclusion);
             if (job.conclusion === 'failure' || job.conclusion === 'cancelled') {
-                console.log("rerun job " + job.name);
+                core.info("rerun job " + job.name);
                 github.rest.checks.rerequestSuite({
                     owner,
                     repo,
