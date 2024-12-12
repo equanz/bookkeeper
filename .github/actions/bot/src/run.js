@@ -20,8 +20,8 @@ async function run(core, context, github) {
     core.info('beginning');
 
     try {
-        const owner = process.env.PROVIDER;
-        const repo = process.env.REPOSITORY;
+        const owner = context.repo.owner;
+        const repo = context.repo.repo;
         const reRunCmd = process.env.RERUN_CMD;
         const comment = context.payload.comment.body;
 
