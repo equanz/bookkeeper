@@ -48,7 +48,9 @@ async function run(core, context, github) {
             status: "completed"
         });
 
+        console.log(jobs.data.check_runs.length);
         jobs.data.check_runs.forEach(job => {
+            console.log(job.conclusion);
             if (job.conclusion === 'failure' || job.conclusion === 'cancelled') {
                 console.log("rerun job " + job.name);
                 github.rest.checks.rerequestSuite({
