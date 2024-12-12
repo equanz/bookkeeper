@@ -35,13 +35,13 @@ async function run(core, context, github) {
                     sha: prRef,
                 }
             }
-        } = await github.pulls.get({
+        } = await github.rest.pulls.get({
             owner,
             repo,
             pull_number: context.issue.number,
         });
 
-        const jobs = await github.checks.listForRef({
+        const jobs = await github.rest.checks.listForRef({
             owner,
             repo,
             ref: prRef,
@@ -51,7 +51,7 @@ async function run(core, context, github) {
         jobs.data.check_runs.forEach(job => {
             if (job.conclusion === 'failure' || job.conclusion === 'cancelled') {
                 console.log("rerun job " + job.name);
-                github.checks.rerequestSuite({
+                github.rest.checks.rerequestSuite({
                     owner,
                     repo,
                     check_suite_id: job.check_suite.id
